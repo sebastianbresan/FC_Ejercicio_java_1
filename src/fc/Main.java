@@ -65,7 +65,7 @@ public class Main {
 
         //-----------COMPROBACION DE EMAILS REPETIDOS EN BASE DE DATOS
         for (User user : users) {
-            testEmail = user.email;
+            testEmail = user.getEmail();
             countPosition++;
             if (set.contains(testEmail)) {
                 list.add(testEmail);
@@ -88,7 +88,7 @@ public class Main {
 
         //-----------COMPROBACION DE ERRORES DE EMAIL  BASE DE DATOS
         for (User user : users) {
-            testEmail = user.email;
+            testEmail = user.getEmail();
             countPosition++;
             if (!testEmail.contains("@") || !testEmail.contains(".")) {
                 list.add(testEmail);
