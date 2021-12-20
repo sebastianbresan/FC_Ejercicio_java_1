@@ -2,9 +2,9 @@ package fc;
 
 public class User {
 
-   private String email;
-   private String name;
-   private String username;
+    private String email;
+    private String name;
+    private String username;
 
     public User(String email, String name, String username) {
         this.email = email;

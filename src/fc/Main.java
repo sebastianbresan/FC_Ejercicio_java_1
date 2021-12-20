@@ -1,7 +1,12 @@
 package fc;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] arg) {
@@ -28,19 +33,21 @@ public class Main {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                if (values[0]== null || values[0].equals("") || values[0].isEmpty()) {
+                if (values[0] == null || values[0].equals("") || values[0].isEmpty()) {
                     values[0] = "NULL";
-                    sbNull.append("ATENCION: hay un error en el campo Email de la linea ").append(lines+1).append(" y se ha reemplazado por el texto 'NULL' ");
-                }if (values[1]== null || values[1].equals("") || values[1].isEmpty()) {
-                    values[1] = "NULL";
-                    sbNull.append("ATENCION: hay un error en el campo Nombre de la linea ").append(lines+1).append(" y se ha reemplazado por el texto 'NULL' ");
-                }if (values[2]== null || values[2].equals("") || values[2].isEmpty()) {
-                    values[2] = "NULL";
-                    sbNull.append("ATENCION: hay un error en el campo Usuario de la linea ").append(lines+1).append(" y se ha reemplazado por el texto 'NULL' ");
+                    sbNull.append("ATENCION: hay un error en el campo Email de la linea ").append(lines + 1).append(" y se ha reemplazado por el texto 'NULL' ");
                 }
-                    User user = new User(values[0], values[1], values[2]);
-                    users.add(lines, user);
-                    lines++;
+                if (values[1] == null || values[1].equals("") || values[1].isEmpty()) {
+                    values[1] = "NULL";
+                    sbNull.append("ATENCION: hay un error en el campo Nombre de la linea ").append(lines + 1).append(" y se ha reemplazado por el texto 'NULL' ");
+                }
+                if (values[2] == null || values[2].equals("") || values[2].isEmpty()) {
+                    values[2] = "NULL";
+                    sbNull.append("ATENCION: hay un error en el campo Usuario de la linea ").append(lines + 1).append(" y se ha reemplazado por el texto 'NULL' ");
+                }
+                User user = new User(values[0], values[1], values[2]);
+                users.add(lines, user);
+                lines++;
 
             }
 
@@ -50,7 +57,6 @@ public class Main {
 
         // IMPRIMIMOS LOS ERRORES RECOLECTADO DE EL PROCESO DE LECTURA DE ARCHIVO .CSV
         System.err.println(sbNull + "\n");
-
 
 
         //-----------IMPRESION DE CANTIDAD DE LINEAS Y DE CADA UNO DE LOS USUARIOS
